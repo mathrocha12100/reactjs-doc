@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, createContext } from 'react';
+import GlobalStyle from './styles/GlobalStyle';
+import MainPage from './pages/Main';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import usePersistedState from './hooks/usePersistedState';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
+
+interface AppContextProps {
+  toggleTheme: () => void;
 }
+
+export const AppContext = createContext<AppContextProps>({
+  toggleTheme: () => {},
+});
+
+const App: React.FC = () => {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme.title === 'light' ? dark : light);
+  }, [setTheme, theme]);
+
+  return (
+    <AppContext.Provider
+      value={{
+        toggleTheme,
+      }}
+    >
+      <ThemeProvider theme={theme}>
+        <MainPage />
+        <GlobalStyle />
+      </ThemeProvider>
+    </AppContext.Provider>
+  );
+};
 
 export default App;
