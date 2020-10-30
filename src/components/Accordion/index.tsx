@@ -30,16 +30,16 @@ const Accordion: React.FC<Props> = ({
 
   return (
     <Container open={open}>
-      <button onClick={toggleAccordion}>
+      <button className="accordionButton" onClick={toggleAccordion}>
         <div className="left">
           {Icon && <Icon size={28} />}
           {HTTPMethod && <HTTPMethod method={method || 'GET'} />}
-          <strong>{label}</strong>
-          <span>{description || ''}</span>
+          <strong className="strongLabel">{label}</strong>
+          <span className="acorddionDescription">{description || ''}</span>
         </div>
         {!open ? <FaArrowUp /> : <FaArrowDown />}
       </button>
-      <main>{children}</main>
+      <main className="accordionMain">{children}</main>
     </Container>
   );
 };

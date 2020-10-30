@@ -7,6 +7,9 @@ import usePersistedState from './hooks/usePersistedState';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 interface AppContextProps {
   toggleTheme: () => void;
 }
@@ -32,6 +35,7 @@ const App: React.FC = () => {
         <MainPage />
         <GlobalStyle />
       </ThemeProvider>
+      <ToastContainer />
     </AppContext.Provider>
   );
 };

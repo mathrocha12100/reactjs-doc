@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
   }
 
-  button {
+  button.accordionButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +52,7 @@ export const Container = styled.div<ContainerProps>`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
-    padding: 18px;
+    padding: 10px;
     display: ${(props) => (props.open ? 'block' : 'none')};
     background-color: ${(props) => props.theme.dialog.primary};
     overflow: hidden;

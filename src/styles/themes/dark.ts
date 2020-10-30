@@ -2,7 +2,6 @@ import { darken } from 'polished';
 
 export default {
   title: 'dark',
-
   body: {
     primary: '#d63af9',
     secondary: '#c62e65',
