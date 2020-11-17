@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://devback.experiencesolucoes.com.br',
+  baseURL: 'url',
 });
 
 export default api;
